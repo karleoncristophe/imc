@@ -3,7 +3,7 @@ import { MVPStackScreenProps } from '../../../@types/navigation'
 import { useTheme } from 'styled-components/native'
 import { ScrollWrapperView } from '../../../components/ScrollWrapperView'
 import { Formik } from 'formik'
-import { Button, TextInput, View } from 'react-native'
+import { Button, TextInput, TouchableOpacity, View } from 'react-native'
 import { Input } from '../../../components/Input'
 import * as Yup from 'yup'
 import { TextBase } from '../../../components/TextBase'
@@ -38,6 +38,8 @@ export const Welcome: React.FC<MVPStackScreenProps<'Welcome'>> = ({
     const height = Number(values.height) / 100
     const calcHeight = Math.pow(height, 2)
     const calc = weight / calcHeight
+
+    console.log(calc)
 
     if (calc < 18.5) {
       return setResult('Abaixo do peso')
@@ -89,7 +91,7 @@ export const Welcome: React.FC<MVPStackScreenProps<'Welcome'>> = ({
               onBlur={handleBlur('weight')}
               keyboardType="numeric"
               value={values.weight}
-              placeholder="Weight"
+              placeholder="60 kg"
             />
             {errors.weight && touched.weight ? (
               <TextBase>{errors.weight}</TextBase>
@@ -103,15 +105,19 @@ export const Welcome: React.FC<MVPStackScreenProps<'Welcome'>> = ({
               onBlur={handleBlur('height')}
               keyboardType="numeric"
               value={values.height}
-              placeholder="Height"
+              placeholder="170 cm"
             />
             {errors.height && touched.height ? (
               <TextBase>{errors.height}</TextBase>
             ) : null}
             <Space h={16} />
-            <Button onPress={handleSubmit} title="Submit" />
+            <TouchableOpacity onPress={handleSubmit}>
+              <TextBase>Submit</TextBase>
+            </TouchableOpacity>
             <Space h={16} />
-            <Button onPress={handleReset} title="Clear" />
+            <TouchableOpacity onPress={handleReset}>
+              <TextBase>Reset</TextBase>
+            </TouchableOpacity>
             <Space h={16} />
             <TextBase ta="center">{result}</TextBase>
           </View>

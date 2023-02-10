@@ -24,6 +24,7 @@ export const theme = {
     ...defaultOptions,
     colors: {
       background: '#000000',
+      background200: '#212326',
       text: '#eeeeee',
       done: '#86c552',
       worning: '#F7DC6F',

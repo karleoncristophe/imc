@@ -14,6 +14,7 @@ export const Input: React.FC<Props> = (props) => {
   return (
     <Container
       {...props}
+      textAlign="center"
       placeholder={props.placeholder || ''}
       placeholderTextColor={theme.colors.disable200}
     />
@@ -21,13 +22,14 @@ export const Input: React.FC<Props> = (props) => {
 }
 
 const Container = styled(TextInput)<Props>`
-  height: 50px;
+  height: 100px;
+  background-color: ${(p) => p.theme.colors.background200};
   font-family: ${(p) => p.ff || p.theme.fonts.Poppins400};
   padding-horizontal: 16px;
   border-radius: 5px;
-  justify-content: center;
-  font-size: ${(p) => p.fz ?? 16}px;
-  border: 1px solid ${(p) => p.theme.colors.disable300};
+  text-align: center;
+  width: 50%;
+  font-size: 40px;
   color: ${(p) => p.theme.colors.text};
   ${(p) =>
     p.w &&
